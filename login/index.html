@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="login-form">
+    <input data-testid="email" type="email" placeholder="Email" />
+    <input data-testid="password" type="password" placeholder="Password" />
+    <button data-testid="login-btn" type="submit">Login</button>
+  </form>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      window.location.href = '/dashboard/';
+    });
+  </script>
+</body>
+</html>

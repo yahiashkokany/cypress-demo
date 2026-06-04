@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Products</title>
+</head>
+<body>
+  <h1>Products</h1>
+  <ul id="product-list"></ul>
+  <form id="add-product-form">
+    <input data-testid="product-name" type="text" placeholder="Product name" />
+    <input data-testid="product-price" type="number" placeholder="Price" />
+    <button data-testid="add-product-btn" type="submit">Add product</button>
+  </form>
+  <button class="success-message" type="button" style="display: none;">Success</button>
+  <script>
+    const list = document.getElementById('product-list');
+    const successBtn = document.querySelector('.success-message');
+
+    function renderProducts(products) {
+      list.innerHTML = products
+        .map((p) => '<li>' + p.name + '</li>')
+        .join('');
+    }
+
+    fetch('/api/products')
+      .then((r) => r.json())
+      .then(renderProducts)
+      .catch(() => renderProducts([]));
+
+    document.getElementById('add-product-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.querySelector('[data-testid="product-name"]').value;
+      const li = document.createElement('li');
+      li.textContent = name;
+      list.appendChild(li);
+      document.querySelector('[data-testid="product-name"]').value = '';
+      document.querySelector('[data-testid="product-price"]').value = '';
+      successBtn.style.display = 'inline-block';
+    });
+
+    setTimeout(function () {
+      successBtn.style.display = 'inline-block';
+    }, 1500);
+  </script>
+</body>
+</html>

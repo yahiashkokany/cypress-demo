@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "cypress:install": "node ./node_modules/cypress/bin/cypress install",
+    "cypress:open": "node ./node_modules/cypress/bin/cypress open",
+    "cypress:run": "node ./node_modules/cypress/bin/cypress run",
+    "test": "node ./scripts/run-tests.js"
+  },
+  "devDependencies": {
+    "cypress": "^15.16.0",
+    "express": "^5.1.0",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "start-server-and-test": "^2.0.13"
+  }
+}
